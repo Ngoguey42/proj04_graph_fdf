@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/25 08:53:27 by ngoguey           #+#    #+#             */
-/*   Updated: 2014/12/12 10:42:06 by ngoguey          ###   ########.fr       */
+/*   Updated: 2014/12/17 11:18:30 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,12 +82,19 @@
 # define DEFAULT_COLOR1 VCOTOI(255, 255, 255, 0)
 # define DEFAULT_COLOR2 VCOTOI(139, 69, 19, 0)
 
-# define STARTCAMX -12.1
-# define STARTCAMY 9.0
-# define STARTCAMZ 10.0
+# define STARTCAMX -3.5
+# define STARTCAMY 0.0
+# define STARTCAMZ 0.0
 
 # define STARTCAMPH -0.0
-# define STARTCAMTH (0.65 * M_PI)
+# define STARTCAMTH (0.5 * M_PI)
+
+/* # define STARTCAMX -12.1 */
+/* # define STARTCAMY 9.0 */
+/* # define STARTCAMZ 10.0 */
+
+/* # define STARTCAMPH -0.0 */
+/* # define STARTCAMTH (0.65 * M_PI) */
 
 /* # define STARTCAMX -8.0 */
 /* # define STARTCAMY -6.0 */
