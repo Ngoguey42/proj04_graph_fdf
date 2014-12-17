@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/04 07:43:29 by ngoguey           #+#    #+#             */
-/*   Updated: 2014/12/17 11:52:41 by ngoguey          ###   ########.fr       */
+/*   Updated: 2014/12/17 16:33:20 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,67 +76,61 @@ void	transcript_cood2(t_fdf fdf, t_cood *coof)
 
 # define DIST 2.00
 # include <stdlib.h>
+# include <gmp.h>
+
 
 t_cood	fdf_get_pixproj(t_fdf fdf, t_cood coof)
 {
-	t_cood	ret;
+/* 	t_cood	ret; */
 	t_ang	ang;
-	double	r;
+/* 	double	r; */
+
+/* 	qprintf("camx%.3f  camy %.3f  camz %.3f \n", fdf.co.x, fdf.co.y, fdf.co.z); */
+
+/* 	r = sqrt(coof.x * coof.x + coof.y * coof.y + coof.z * coof.z); */
+	ang.ph = (
+		fdf.a.ph
+		);
+	ang.th =  (
+		fdf.a.th
+		);
+
 
 	transcript_cood2(fdf, &coof);
-	r = sqrt(coof.x * coof.x + coof.y * coof.y + coof.z * coof.z);
-	ang.ph = (
-		atan(coof.y / coof.x)
-		- fdf.a.ph
-		);
-	ang.th = M_PI / 2 - (
-		fdf.a.th
-		- acos(coof.z / (r))
-		);
-
-/* 	tan(THETA) = x / DIST ||  x = tan(THETA) * dist  */
-/* 	tan(PHI) = y / DIST   ||  y = tan(PHI) * dist  */
-
-/* 	qprintf("PH:%.3f TH:%.3f DI:%4.1f  ", ang.ph / M_PI , ang.th / M_PI, r); */
-
-/* 	qprintf("PH:%.2f TH:%.2f  ", tan(ang.ph), tan(round((M_PI - ang.th) * 100) / 100)); */
+/* 	qprintf("X%.3f Y%.3f \n", coof.x, coof.y); */
+	double tmp = coof.x;
+	coof.x = coof.x * cos(-ang.ph) - coof.y * sin(-ang.ph);
+	coof.y = tmp * sin(-ang.ph) + coof.y * cos(-ang.ph);
+/* 	qprintf("X%.3f Y%.3f \n", coof.x, coof.y);	 */
 
 
-/* 	qprintf(""); */
-/* 	exit(0); */
-/* 	ret.x = (double)WIN_X / 2. - tan(round(ang.ph * 100) / 100) * DIST * 10; */
-/* 	ret.y = (double)WIN_Y / 2. - tan(round((M_PI - ang.th) * 100) / 100) * DIST * 10; */
+	tmp = coof.x;
+	coof.x = coof.x * cos(ang.th) + coof.z * sin(ang.th);
+/* 	coof.z = - tmp * sin(ang.th) - coof.z * cos(ang.th); */
 
-/* 	qprintf("X:%.2f Y:%.2f", ret.x, ret.y); */
+/* 	coof.y = coof.y * cos(ang.th) - coof.z * sin(ang.th); */
 
-	ret.x = WIN_X / 2 - WIN_X / 2 * (ang.ph / PHMAX);
-	ret.y = WIN_Y / 2 + WIN_Y / 2 * ((ang.th - M_PI / 2) / THDELTA);
-/* 	qprintf("\n"); */
 
-	ret.z = 0;
-	return (ret);
+
+
+	coof.x = WIN_X / 2 + coof.x * 50.;
+	coof.y = WIN_Y / 2 + coof.y * 50.;
+/* 	coof.x = coof.y * 5.0; */
+/* 	qprintf("ICI=> %.3f\n", (double)coof.x); */
+/* 	coof.y = (double)coof.x * (double)1.0; */
+
+/* 	qprintf("ICI=> %.3f\n", (double)coof.y); */
+
+
+/* 	qprintf("fX%.0f fY%.0f \n", (double)coof.x, (double)coof.y);	 */
+/* 	qprintf("fX%.1f%% fY%.1f%% \n\n", coof.x / (double)WIN_X * 100, coof.y / (double)WIN_Y * 100);	 */
+
+	coof.z = 0;
+	return (coof);
+
+
+/* 	ret.z = 0; */
+/* 	return (ret); */
 }
-
-t_cood	fdf_get_pixprojold(t_fdf fdf, t_cood coof)
-{
-	t_cood	ret;
-	t_ang	ang;
-	double	r;
-
-	transcript_cood2(fdf, &coof);
-	r = sqrt(coof.x * coof.x + coof.y * coof.y + coof.z * coof.z);
-	ang.ph = (
-		atan(coof.y / coof.x)
-		- fdf.a.ph
-		);
-	ang.th = M_PI / 2 - (
-		fdf.a.th
-		- acos(coof.z / (r))
-		);
-
-
-	ret.x = WIN_X / 2 - WIN_X / 2 * (ang.ph / PHMAX);
-	ret.y = WIN_Y / 2 + WIN_Y / 2 * ((ang.th - M_PI / 2) / THDELTA);
-	ret.z = 0;
-	return (ret);
-}
+/* 	coof.x = coof.x * cos(-ang.ph) - coof.y * sin(-ang.ph); */
+/* 	coof.y = coof.x * sin(-ang.ph) + coof.y * cos(-ang.ph); */
