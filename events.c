@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/25 09:17:49 by ngoguey           #+#    #+#             */
-/*   Updated: 2014/12/12 14:10:48 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/01/13 12:13:03 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,7 @@ int		fdf_keyup_hook(int keycode, t_fdf *fdf)
 	if (keycode == KEYQUI)
 		fdf_quit(*fdf);
 	if (keycode == 'p')
-	{
-/* 	fdf_init_surface(*fdf); */
 		fdf_set_defpos(fdf);
-	}
 	else if (keycode == 'w' && (t = 1))
 		fdf->ev[0] = 0;
 	else if (keycode == 's' && (t = 1))
@@ -91,10 +88,6 @@ int		fdf_keyup_hook(int keycode, t_fdf *fdf)
 		fdf->ev[4] = 0;
 	else if (keycode == 'd' && (t = 1))
 		fdf->ev[5] = 0;
-	else if (keycode == ' ' && (t = 1))
-		fdf->ev[6] = 0;
-	else if (keycode == 'c' && (t = 1))
-		fdf->ev[7] = 0;
 	else if (keycode == KEYTUP && (t = 1))
 		fdf->ev[8] = 0;
 	else if (keycode == KEYTDO && (t = 1))
@@ -121,10 +114,6 @@ int		fdf_keydo_hook(int keycode, t_fdf *fdf)
 		fdf->ev[4] = 1;
 	else if (keycode == 'd' && (t = 1))
 		fdf->ev[5] = 1;
-	else if (keycode == ' ' && (t = 1))
-		fdf->ev[6] = 1;
-	else if (keycode == 'c' && (t = 1))
-		fdf->ev[7] = 1;
 	else if (keycode == KEYTUP && (t = 1))
 		fdf->ev[8] = 1;
 	else if (keycode == KEYTDO && (t = 1))

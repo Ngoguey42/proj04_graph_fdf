@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/25 08:53:27 by ngoguey           #+#    #+#             */
-/*   Updated: 2014/12/17 16:33:36 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/01/13 12:13:44 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@
 # include <libft.h>
 # include <ft_math.h>
 # include <ft_clock.h>
-
-// # include <ft_error.h>
 
 # define USEMLX
 # ifdef USEMLX
@@ -35,8 +33,6 @@
 # define DEPTH 32
 # define WIN1 ((SDL_Surface*)fdf.win1)
 # define WIN1P ((SDL_Surface*)fdf->win1)
-// typedef unsigned char t_byte;
-// # define ABS(VA) (VA < 0 ? -VA : VA)
 # endif
 
 #define PEACE(A1, A2) A1 A2; (void)A2
@@ -47,21 +43,17 @@
 # define RATIO 1.77777778
 # define WIN_X (int)(WINY * RATIO)
 
-/* # define FOV (M_PI * 1.75 / 4.0) //en rad vertical */
-# define FOV (M_PI * 1.0 / 3.0) //en rad horiz
+# define FOV (M_PI * 1.0 / 3.0)
 # define FOV_Y (FOV / RATIO)
 # define FOV_X FOV
-/* # define THMAX (FOV_Y / 2.0) */
-/* # define THMIN (-THMAX) */
+
 # define THDELTA (FOV_Y / 2.0)
 # define THMIN (M_PI / 2 - THDELTA)
-/* # define THMAX (M_PI / 2 + THMIN) */
 # define THMAX (M_PI / 2 + THDELTA)
 
 # define PHMAX (FOV_X / 2.0)
 # define PHMIN (-PHMAX)
 
-/* # define DENSITY 0.0010 */
 # define DENSITY 1.0
 # define DENSITY3D 50.0
 
@@ -72,12 +64,7 @@
 # define XYSPEEDBASE 0.5
 # define ZSPEEDBASE 0.5  
 # define ASPEEDBASE 0.075
-// # define DEFAULT_COLOR0 VCOTOI(0, 255, 0, 0)
-// # define DEFAULT_COLOR1 VCOTOI(0, 0, 255, 0)
-// # define DEFAULT_COLOR2 VCOTOI(255, 0, 0, 0)
 
-/* # define DEFAULT_COLOR2 VCOTOI(139, 69, 19, 0) */
-/* # define DEFAULT_COLOR1 VCOTOI(255, 255, 255, 0) */
 # define DEFAULT_COLOR0 VCOTOI(50, 125, 50, 0)
 # define DEFAULT_COLOR1 VCOTOI(255, 255, 255, 0)
 # define DEFAULT_COLOR2 VCOTOI(139, 69, 19, 0)
@@ -88,20 +75,6 @@
 
 # define STARTCAMPH (1.528 * M_PI)
 # define STARTCAMTH (10.958 * M_PI)
-
-/* # define STARTCAMX -12.1 */
-/* # define STARTCAMY 9.0 */
-/* # define STARTCAMZ 10.0 */
-
-/* # define STARTCAMPH -0.0 */
-/* # define STARTCAMTH (0.65 * M_PI) */
-
-/* # define STARTCAMX -8.0 */
-/* # define STARTCAMY -6.0 */
-/* # define STARTCAMZ 14.0 */
-
-/* # define STARTCAMPH (0.1 * M_PI) */
-/* # define STARTCAMTH (0.5 * M_PI) */
 
 
 # define POINTS_NAMES_LEN 30
