@@ -6,7 +6,7 @@
 #    By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/04 11:28:17 by ngoguey           #+#    #+#              #
-#    Updated: 2014/12/09 06:21:06 by ngoguey          ###   ########.fr        #
+#    Updated: 2015/01/13 12:05:24 by ngoguey          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -17,9 +17,6 @@ LFTPATH = libft/
 LFTIPATH = -I $(LFTPATH)includes/
 LFT = -L $(LFTPATH) -lft
 
-# FT_ERROR
-ERRSRCPATH = ft_error
-ERRINCLUDE = $(ERRSRCPATH)/
 
 OBJPATH = obj
 SRCPATH = .
@@ -58,12 +55,9 @@ putsmall_3dobj2.c putmedium_2dobj.c
 # 
 
 # putsmall_3dobj.c 
-ERRSRCSFILES = ft_error.c
 
 SRC = $(addprefix $(SRCPATH)/,$(SRCSFILES))
 OBJECTS = $(SRC:$(SRCPATH)/%.c=$(OBJPATH)/%.o)
-ERRSRC = $(addprefix $(ERRSRCPATH)/,$(ERRSRCSFILES))
-ERROBJECTS = $(ERRSRC:$(ERRSRCPATH)/%.c=$(OBJPATH)/%.o)
 
 RM = rm -rf
 
@@ -74,16 +68,12 @@ E = \033[39m
 
 all: l $(NAME)
 
-$(NAME): $(OBJECTS) $(ERROBJECTS)
-	@echo -e "$(Y)[COMPILING FDF] $(G) $(CC) -o $@ $(CFLAGS) objs.o error.o $(LIBS) $(E)"
-	@$(CC) -o $@ $(CFLAGS) $(OBJECTS) $(ERROBJECTS) $(INCLUDES) $(LIBS)
+$(NAME): $(OBJECTS)
+	@echo -e "$(Y)[COMPILING FDF] $(G) $(CC) -o $@ $(CFLAGS) objs.o $(LIBS) $(E)"
+	@$(CC) -o $@ $(CFLAGS) $(OBJECTS) $(INCLUDES) $(LIBS)
 	@echo -e "$(Y)[COMPILING FDF DONE]$(E)"
 
 $(OBJECTS): $(OBJPATH)/%.o : $(SRCPATH)/%.c
-	@mkdir -p $(dir $@)
-	$(CC) -o $@ $(CFLAGS) $(INCLUDES) $(LIBS) -c $<
-
-$(ERROBJECTS): $(OBJPATH)/%.o : $(ERRSRCPATH)/%.c
 	@mkdir -p $(dir $@)
 	$(CC) -o $@ $(CFLAGS) $(INCLUDES) $(LIBS) -c $<
 
