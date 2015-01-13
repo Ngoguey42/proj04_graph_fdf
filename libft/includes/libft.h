@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/03 20:28:26 by ngoguey           #+#    #+#             */
-/*   Updated: 2014/12/10 12:05:30 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/01/13 10:45:50 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <stddef.h>
 # include <stdarg.h>
-# include <stdio.h> //debug
 # include "ft_typedefs.h"
 
 /*
@@ -92,6 +91,7 @@ char	*ft_utoa(t_ui32 value, char *str, int base);
 */
 int		ft_maxintlen(size_t sizeofint, int base);
 int		ft_convsz(t_ui64 bytes, char *buffer);
+char	*ft_roundup_b10(char *str);
 void	ft_putexpchar(int exp, char *buffer);
 char	*ft_pad_string(char *str, char c, int n, int freestr);
 char	*ft_revstr(char *str);
@@ -112,6 +112,7 @@ char	*ft_strjoinfree(char *s1, char *s2, int frees1, int frees2);
 char	*ft_strsub(char const *s, t_ui32 start, size_t len);
 char	*ft_strtrim(char const *s);
 char	**ft_strsplit(char const *s, char c);
+int		ft_strsplit_s(const char *s, char *delims, char ***ret);
 
 /*
 ** ctype.h
@@ -127,6 +128,7 @@ int		ft_islower(int c);
 int		ft_isprint(int c);
 int		ft_ispunct(int c);
 int		ft_isspace(int c);
+int		ft_isunixspace(int c);
 int		ft_isupper(int c);
 int		ft_isxdigit(int c);
 int		ft_tolower(int c);
@@ -155,6 +157,10 @@ size_t	ft_strlcpy(char *s1, const char *s2, size_t num);
 char	*ft_strccpy(char *dst, const char *src);
 char	*ft_catpath(const char *path, const char *file, char *dst);
 char	*ft_filename(const char *path, char *dst);
+int		ft_resolve_path(char *buf);
+int		ft_getcmdpath(const char *cmd, char *refs[4], char **ptr);
+int		ft_getcmdpath_env(const char *cmd, const char **env, char **ptr);
+int		ft_access(const char *pathname, int mode);
 void	*ft_memccpy2(void *dst, const void *src, size_t n);
 /*
 ** Concatenation:
@@ -326,6 +332,7 @@ t_tabdt	*ft_tabcc(void **requested);
 size_t	ft_tabsize(void **tab);
 int		ft_tabdel(void ***atab);
 int		ft_tabdel2(void ***atab);
+int		ft_tabdel3(void ***atab);
 int		ft_tabdelf(void ***atab, void (*f)(void *c));
 void	ft_tabsort(void **tab, int (*f)(const void *s1, const void *s2), int n);
 /*
@@ -340,6 +347,14 @@ int		ft_metaset(char *tabname, void *(*f)(const void *k),
 ** Others
 */
 size_t	ft_tblsize(void **tbl);
+
+char	**ft_envgetp(const char **env, const char *key);
+char	*ft_envget(const char **env, const char *key);
+char	**ft_envupdate_m(char ***env, char *line);
+char	**ft_envnew_m(char ***env, char *line);
+char	**ft_envnew(char ***env, char *line);
+int		ft_expand_tilde(const char *src, char *ref[3], char **ptr);
+int		ft_expand_tilde_env(const char *src, const char **env, char **ptr);
 
 /*
 ** -

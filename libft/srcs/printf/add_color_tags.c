@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/07 18:36:23 by ngoguey           #+#    #+#             */
-/*   Updated: 2014/11/12 12:07:15 by ngoguey          ###   ########.fr       */
+/*   Updated: 2014/12/22 09:43:41 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ static char	g_stacks[2][COLORS_STACK_SIZE];
 static int	g_ci;
 static int	g_bi;
 
-int				get_color_tag_index(const char *str)
+int				coi(const char *str)
 {
 	int	i;
 
@@ -152,7 +152,7 @@ static size_t	track_color_tags(char **strp, char **s1p)
 {
 	int	j;
 
-	if ((j = get_color_tag_index(*s1p)) >= NUM_C_TAGS * 2)
+	if ((j = coi(*s1p)) >= NUM_C_TAGS * 2)
 		return (0);
 	ft_strcpy(*strp, g_color_tags[j + 1]);
 	if (j == EOCALL_ID || j == EOF_ID)
@@ -190,7 +190,7 @@ void			string_cat(char *s1, size_t len)
 	}
 	while (len-- > 0)
 	{
-		if (len >= 4 && *s1 == ':' && s1[4] == ':')
+		if (len >= 4 && *s1 == ':' && s1[4] == ':' && coi(s1) < NUM_C_TAGS * 2)
 			len -= track_color_tags(&str, &s1);
 		else
 		{

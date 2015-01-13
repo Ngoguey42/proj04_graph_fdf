@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/19 08:51:27 by ngoguey           #+#    #+#             */
-/*   Updated: 2014/12/01 11:59:31 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/01/13 10:44:04 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,7 @@ void		*ft_metaget(char *tabname, const void *key)
 	if (!(m = ft_metacc(tabname)))
 		return (NULL);
 	if (!m->initkey)
-	{
-		perror("Metatab not initialized.");
 		return (NULL);
-	}
 	i = get_key_index(m, key, m->keysz);
 	if (i < 0)
 		return (NULL);

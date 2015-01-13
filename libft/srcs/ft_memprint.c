@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/03 19:47:05 by ngoguey           #+#    #+#             */
-/*   Updated: 2014/11/03 20:09:56 by ngoguey          ###   ########.fr       */
+/*   Updated: 2014/12/28 10:27:01 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,7 @@
 
 static void	prnt_linestart(t_byte *b)
 {
-	char		str[9];
-
-	ft_lutoa(ft_getptri(b), str, 16);
-	ft_putnchar('0', 8 - ft_strlen(str));
-	ft_putstr(str);
-	ft_putchar(':');
+	ft_printf("%p:", (void*)b);
 }
 
 static void	prnt_lineend(void *b, int i)
@@ -35,6 +30,8 @@ static void	prnt_lineend(void *b, int i)
 	{
 		if (ft_isprint(*s))
 			ft_putchar(*s);
+		else if (*s == 0)
+			ft_putstr("\033[33m0\033[0m");
 		else
 			ft_putchar('.');
 		s++;

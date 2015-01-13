@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/03 19:15:47 by ngoguey           #+#    #+#             */
-/*   Updated: 2014/12/10 07:22:23 by ngoguey          ###   ########.fr       */
+/*   Updated: 2014/12/22 09:30:59 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ char	*ft_strjoinfree(char *s1, char *s2, int frees1, int frees2)
 	char	*ret;
 	size_t	len;
 
-/* 	qprintf("(%s) (%s)\n", s1, s2); */
 	len = ft_strlen(s1) + ft_strlen(s2) + 1;
 	ret = (char*)malloc(len * sizeof(char));
 	if (!ret)

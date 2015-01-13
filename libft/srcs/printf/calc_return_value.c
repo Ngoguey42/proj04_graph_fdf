@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/07 18:14:36 by ngoguey           #+#    #+#             */
-/*   Updated: 2014/11/12 12:30:53 by ngoguey          ###   ########.fr       */
+/*   Updated: 2014/12/22 09:43:52 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	subpart_len(const char *str, size_t len)
 	while (i-- > 4)
 	{
 		if (*str == ':' && str[4] == ':' &&
-			(j = get_color_tag_index(str)) < NUM_C_TAGS * 2)
+			(j = coi(str)) < NUM_C_TAGS * 2)
 		{
 			len += (j < NUM_SMALLC_TAGS * 2) ? -1 : 0;
 			str += 4;

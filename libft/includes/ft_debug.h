@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/01 12:00:09 by ngoguey           #+#    #+#             */
-/*   Updated: 2014/12/01 12:00:45 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/01/09 14:25:42 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,9 @@ void	ft_metagetdebug1(char *tabname, const void *key);
 void	ft_metagetdebug2(t_metat *m, const void *rkey);
 void	ft_metagetdebug3(t_metat *m, t_metak k);
 void	ft_metagetdebug5(t_metat *m, int i);
+
+void	ft_printvar(char s[3][50], void *ptr, int line);
+
+# define D(T, A) ft_printvar((char[][50]){#T, #A, __FILE__}, (T*)&A, __LINE__)
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/09 08:56:38 by ngoguey           #+#    #+#             */
-/*   Updated: 2014/12/09 11:46:08 by ngoguey          ###   ########.fr       */
+/*   Updated: 2014/12/22 09:38:19 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ size_t			ptf_showed_len(char *str)
 			((str[3] == 'm') || ((ft_isdigit(str[3]) && str[4] == 'm'))))
 			str += (str[3] == 'm') ? 3 : 4;
 		else
-			tot++;			
+			tot++;
 		str++;
 	}
 	return (tot);
@@ -43,7 +43,6 @@ static void		parse_lst(t_list *lst, int *datas)
 		datas[4] = MAX(datas[4], (int)tmp);
 		lst = lst->next;
 	}
-	
 }
 
 static int		does_entries_fits_in(int *datas)
@@ -78,7 +77,7 @@ void			ptf_lscols_getdatas(t_list *lst, int wid, int *datas)
 		if (does_entries_fits_in(datas))
 			datas[9]--;
 		else
-			break;
+			break ;
 	}
 	datas[9]++;
 	datas[10] = datas[8] - (datas[9] * datas[8] - datas[1]);

@@ -6,13 +6,12 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/12 16:22:21 by ngoguey           #+#    #+#             */
-/*   Updated: 2014/12/10 12:20:30 by ngoguey          ###   ########.fr       */
+/*   Updated: 2014/12/22 09:39:24 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdlib.h>
-
 
 int	ft_sprintf(char *str, const char *format, ...)
 {

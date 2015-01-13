@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/03 07:44:42 by ngoguey           #+#    #+#             */
-/*   Updated: 2014/12/03 13:03:22 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/01/13 11:49:52 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ int	fdf_init_window(t_fdf *fdf)
 int	fdf_init_surface(t_fdf fdf)
 {
 	(void)fdf;
-/* 	mlx_clear_window(SERV, WIN1); */
 	return (0);
 }
 
@@ -58,7 +57,6 @@ int fdf_set_surface(t_fdf fdf)
 int	fdf_push_surface(t_fdf fdf)
 {
 	(void)fdf;
-	//mdx_clean_surface
 	return (0);
 }
 

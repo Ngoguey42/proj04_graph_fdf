@@ -6,28 +6,27 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/07/19 11:39:32 by ngoguey           #+#    #+#             */
-/*   Updated: 2014/07/20 11:42:21 by ngoguey          ###   ########.fr       */
+/*   Updated: 2014/12/31 14:56:06 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_EVAL_EXPR_H
 # define FT_EVAL_EXPR_H
 
-# include <stdlib.h>
+# include "libft.h"
 
-typedef struct				s_evlxpr_cell
+typedef struct		s_evx
 {
-	struct s_evlxpr_cell	*next;
-	int						value;
-	char					oper;
-	char					ref;
-}							t_evlxpr_cell;
+	struct s_evx	*next;
+	int				value;
+	char			oper;
+	char			ref;
+}					t_evx;
 
-t_evlxpr_cell				**evlxpr_convert_chain(char *str);
-int							evlxpr_shallow();
-t_evlxpr_cell				*evlxpr_llast(t_evlxpr_cell **beggining);
-int							evlxpr_calculate(int n1, int n2, char ref);
-void						evlxpr_lpback(t_evlxpr_cell **beggining, int value,
-							char oper, char ref);
+int					evlxpr_convert_chain(char *str, t_evx *alst[1]);
+int					evlxpr_shallow();
+t_evx				*evlxpr_llast(t_evx *alst[1]);
+int					evlxpr_calculate(int n1, int n2, char ref);
+int					evlxpr_lpback(t_evx *alts[1], int v, char op, char ref);
 
 #endif

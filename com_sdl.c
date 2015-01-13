@@ -6,18 +6,17 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/25 10:35:39 by ngoguey           #+#    #+#             */
-/*   Updated: 2014/12/02 14:50:08 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/01/13 11:50:08 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-// #include <stdlib.h>
 
 int	fdf_init_window(t_fdf *fdf)
 {
     SDL_Init(SDL_INIT_VIDEO);
-    fdf->win1 = (void*)SDL_SetVideoMode(WIN_X, WIN_Y, DEPTH, SDL_HWSURFACE); // On tente d'ouvrir une fenêtre
-    if (WIN1P == NULL) // Si l'ouverture a échoué, on le note et on arrête
+    fdf->win1 = (void*)SDL_SetVideoMode(WIN_X, WIN_Y, DEPTH, SDL_HWSURFACE);
+    if (WIN1P == NULL)
     {
 		ft_dprintf(2, "Could not create new window : %s\n", SDL_GetError());
 		return (1);

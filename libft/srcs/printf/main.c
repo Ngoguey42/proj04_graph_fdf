@@ -1,10 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2014/12/27 10:13:15 by ngoguey           #+#    #+#             */
+/*   Updated: 2014/12/27 10:35:23 by ngoguey          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <limits.h>
 #include <math.h>
 #include "ft_printf.h"
 #include "libft.h"
-
 
 /* int		ft_vsprintf(char *str, const char *format, va_list args)  */
 /* { */
@@ -127,55 +138,69 @@ size_t strlen_doublezero(char *str)
 #define NEW_SPECIFIERS ((char*)ft_strjoin(LENG, SPEC))
 // // "jztLhl"
 #define LENG ""
-// #define LENG "j"
-// #define LENG "z"
-// #define LENG "t"
-// #define LENG "L"
-// #define LENG "h"
-// #define LENG "l" 
-// #define LENG "hh"
+/* #define LENG "j" */
+/* #define LENG "z" */
+/* #define LENG "t" */
+/* #define LENG "L" */
+/* #define LENG "h" */
+/* #define LENG "l" */
+/* #define LENG "hh" */
 /* #define LENG "ll" */
 
 
-// // "diuoxX   fFeEgGaA   cspn%"
+// // // // // //dDioOuUxX
+/* #define SPEC "i"  // 100% */
 /* #define SPEC "d"  // 100% */
-// #define SPEC "u"  // 100%
-// #define SPEC "o"  // 100%
+/* #define SPEC "D"  // 100% */
+/* #define SPEC "u"  // 100% */
+/* #define SPEC "U"  // 100% */
+/* #define SPEC "o"  // 100% */
+/* #define SPEC "O"  // 100% */
+/* #define SPEC "x"  // 100% */
 /* #define SPEC "X"  // 100% */
-/* #define SPEC "A"  // %LA +approfondir tests */
-// #define SPEC "c"  // %lc +faire meilleurs tests
-// #define SPEC "s"  // %ls +faire meilleurs tests
+
+// // // // // //d%
 /* #define SPEC "p"  // 100% */
 /* #define SPEC "%"  // 100% */
 
-/* #define SPEC "f"  // undone */
-#define SPEC "C"  // undone
 
+// // // // // //sScC
+/* #define SPEC "s"  // %ls +faire meilleurs tests */
+/* #define SPEC "S"  // */
+/* #define SPEC "c"  // %lc +faire meilleurs tests */
+/* #define SPEC "C"  // */
+
+
+/* #define SPEC "a"  // %LA +approfondir tests */
+/* #define SPEC "A"  // %LA +approfondir tests */
+
+#define SPEC "f"  // undone
 // #define SPEC "F"  // undone
+// #define SPEC "e"  // undone
 // #define SPEC "E"  // undone
+// #define SPEC "g"  // undone
 // #define SPEC "G"  // undone
+
 // #define SPEC "n"  // undone
 
 
 #define BONUS_TESTS 0
 #define MALLOC_SIZE 50000
 
-#if BONUS_TESTS == 0
+#if BONUS_TESTS == 0// DONT TOUCH
 
-#define FLOAT_NUMBERS 0
-
-#define FLOAT_TO_TEST 10 //1->6	1:(250 norm randoms)  2:(250 unnorm randoms)  3:(fixes et 30 random nan)  
+#define FLOAT_NUMBERS 1
+#define FLOAT_TO_TEST 1 //1->6	1:(250 norm randoms)  2:(250 unnorm randoms)  3:(fixes et 30 random nan)  
 //								4:(nan bornes et delta 33)  5:(norm bornes et delta 33)  6:(unnorm bornes et delta 33)
 //								7:(norm randoms via %f)	8:(norm randoms via %a)  9:(norm randoms via %e) 
 //								10: un peu de tout, efficace
+
+
 #define HIDE_ALL_RESULTS 0
 #define MAX_BAD_TO_WRITE 200
 
 #define HIDE_GOOD_RESULTS 0
 #define MAX_GOOD_TO_WRITE 50
-
-
-
 
 #define NEW_STRLEN 50
 

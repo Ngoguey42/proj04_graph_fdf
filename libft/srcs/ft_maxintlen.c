@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/03 19:41:46 by ngoguey           #+#    #+#             */
-/*   Updated: 2014/11/08 15:40:38 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/01/01 11:26:32 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +18,23 @@
 ** Length is rounded up for uncommon bases.
 */
 
-const int		g_base2_sizes[4] = {16, 32, 0, 64};
-const int		g_base8_sizes[4] = {6, 12, 0, 22};
-const int		g_base10_sizes[4] = {6, 11, 0, 20};
-const int		g_base16_sizes[4] = {5, 9, 0, 17};
-const int		g_base36_sizes[4] = {4, 7, 0, 14};
-
 int		ft_maxintlen(size_t sizeofint, int base)
 {
+	const int		base2_sizes[4] = {16, 32, 0, 64};
+	const int		base8_sizes[4] = {6, 12, 0, 22};
+	const int		base10_sizes[4] = {6, 11, 0, 20};
+	const int		base16_sizes[4] = {5, 9, 0, 17};
+	const int		base36_sizes[4] = {4, 7, 0, 14};
+
 	if (base > 36 || base < 2 || sizeofint < 2 || sizeofint > 8)
 		return (0);
 	if (base < 8)
-		return (g_base2_sizes[sizeofint / 2 - 1]);
+		return (base2_sizes[sizeofint / 2 - 1]);
 	if (base < 10)
-		return (g_base8_sizes[sizeofint / 2 - 1]);
+		return (base8_sizes[sizeofint / 2 - 1]);
 	if (base < 16)
-		return (g_base10_sizes[sizeofint / 2 - 1]);
+		return (base10_sizes[sizeofint / 2 - 1]);
 	if (base < 36)
-		return (g_base16_sizes[sizeofint / 2 - 1]);
-	return (g_base36_sizes[sizeofint / 2 - 1]);
+		return (base16_sizes[sizeofint / 2 - 1]);
+	return (base36_sizes[sizeofint / 2 - 1]);
 }

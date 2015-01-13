@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/07 18:17:15 by ngoguey           #+#    #+#             */
-/*   Updated: 2014/12/10 12:45:00 by ngoguey          ###   ########.fr       */
+/*   Updated: 2014/12/22 09:39:03 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,6 @@ int			ft_getprintf(char **ret, const char *format, va_list args)
 	va_list			args2;
 	int				i;
 
-/* 	if ((beginning = malloc(sizeof(t_printf_part*))) == NULL) */
-/* 		return (-1); */
 	if (parse_format(format, beginning) <= 0)
 		return (-1);
 	va_copy(args2, args);

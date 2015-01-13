@@ -1,31 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_isunixspace.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/03 19:24:57 by ngoguey           #+#    #+#             */
-/*   Updated: 2014/12/31 14:11:22 by ngoguey          ###   ########.fr       */
+/*   Created: 2014/12/28 11:06:28 by ngoguey           #+#    #+#             */
+/*   Updated: 2014/12/28 11:06:51 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-** 'ft_putnbr' prints a given integer.
-*/
-
-void	ft_putnbr_fd(int n, int fd)
+int	ft_isspace(int c)
 {
-	char	buf[50];
-
-	ft_itoa_c(n, buf, 10);
-	ft_putstr_fd(buf, fd);
-	return ;
-}
-
-void	ft_putnbr(int n)
-{
-	ft_putnbr_fd(n, 1);
+	return (c == '\t' || c == ' ' || c == '\n');
 }

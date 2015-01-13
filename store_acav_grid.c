@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/05 07:42:11 by ngoguey           #+#    #+#             */
-/*   Updated: 2014/12/05 10:59:46 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/01/13 11:56:55 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	store_point(int pointinfo[3], int lineinfo[3], t_fdf *fdf)
 	point.coof = coof;
 	fdf->fdfsz.z = MAX(fdf->fdfsz.z, pointinfo[2]);
 	if (ft_tabaddm((void***)fdf->pntm, &point, sizeof(t_point)))
-		exit(0); //ft_error
+		exit(0);
 	(void)lineinfo;
 }
 
@@ -134,7 +134,7 @@ void	store_segment(int c, int l, int lineinfo[3], t_fdf *fdf)
 		obj.gr = fdf_build_grad(*fdf, (*fdf->pntm)[obj.apointi]->coof.z,
 								  (*fdf->pntm)[obj.bpointi]->coof.z);
 		if (ft_tabaddm((void***)fdf->objm, &obj, sizeof(t_fdfobj)))
-			exit(0); //ft_error
+			exit(0);
 	}
 	if (l != 1)
 	{
@@ -142,7 +142,7 @@ void	store_segment(int c, int l, int lineinfo[3], t_fdf *fdf)
 		obj.gr = fdf_build_grad(*fdf, (*fdf->pntm)[obj.apointi]->coof.z,
 								  (*fdf->pntm)[obj.bpointi]->coof.z);
 		if (ft_tabaddm((void***)fdf->objm, &obj, sizeof(t_fdfobj)))
-			exit(0); //ft_error
+			exit(0);
 	}
 }
 

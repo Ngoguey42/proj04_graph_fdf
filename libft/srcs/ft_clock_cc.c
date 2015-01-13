@@ -6,13 +6,18 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/12 09:08:37 by ngoguey           #+#    #+#             */
-/*   Updated: 2014/12/12 13:58:11 by ngoguey          ###   ########.fr       */
+/*   Updated: 2014/12/22 07:50:31 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_clock.h>
 #include <libft.h>
 
+/*
+** See ../includes/ft_clock.h for details.
+** *
+** 'ft_clock_cc'	stores clocks.
+*/
 
 static void		fill_hole(t_clockev *evs[MAX_CLOCKS + 1], int hole)
 {
@@ -32,7 +37,7 @@ static void		fill_hole(t_clockev *evs[MAX_CLOCKS + 1], int hole)
 }
 
 static int		remove_entry(t_clockev *evs[MAX_CLOCKS + 1], t_clockev *ev)
-{	
+{
 	int	i;
 
 	i = 0;
@@ -69,7 +74,6 @@ t_clockev		**ft_clockev_cc(t_clockev *ev, int action)
 {
 	static t_clockev	*evs[MAX_CLOCKS + 1] = {NULL};
 
-/* 	ft_bzero(evs, sizeof(t_clockev*) * (MAX_CLOCKS + 1)); */
 	if (ev != NULL)
 	{
 		if (action == 1)

@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/03 19:18:48 by ngoguey           #+#    #+#             */
-/*   Updated: 2014/12/10 07:17:00 by ngoguey          ###   ########.fr       */
+/*   Updated: 2014/12/22 09:31:25 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,12 +88,10 @@ double			ft_log10(double nb)
 	t_dbl_extract	ex;
 
 	ex.s.exp = 0;
-/* 	qprintf("log10 %.1f\n", nb); */
 	if ((type = ft_dbltype(nb)) >= 5 && type <= 7)
 		return ((type == 7) ? M_INFINITY : M_MINFINITY);
 	else if (type >= 4 || type == 2)
 		return (M_NAN);
-
 	ex.d = nb;
 	if (type == 1)
 		retexp = (double)ex.s.exp - 1023;

@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_getcmdpath_env.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/03 19:24:57 by ngoguey           #+#    #+#             */
-/*   Updated: 2014/12/31 14:11:22 by ngoguey          ###   ########.fr       */
+/*   Created: 2015/01/13 08:23:44 by ngoguey           #+#    #+#             */
+/*   Updated: 2015/01/13 08:23:45 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-** 'ft_putnbr' prints a given integer.
-*/
-
-void	ft_putnbr_fd(int n, int fd)
+int			ft_getcmdpath_env(const char *cmd, const char **env, char **ptr)
 {
-	char	buf[50];
+	char	*ref[4];
 
-	ft_itoa_c(n, buf, 10);
-	ft_putstr_fd(buf, fd);
-	return ;
-}
-
-void	ft_putnbr(int n)
-{
-	ft_putnbr_fd(n, 1);
+	ref[0] = ft_envget(env, "PATH=");
+	ref[1] = ft_envget(env, "HOME=");
+	ref[2] = ft_envget(env, "PWD=");
+	ref[3] = ft_envget(env, "OLDPWD=");
+	if (ref[0] != NULL)
+		ref[0] += 5;
+	if (ref[1] != NULL)
+		ref[1] += 5;
+	if (ref[2] != NULL)
+		ref[2] += 4;
+	if (ref[3] != NULL)
+		ref[3] += 7;
+	return (ft_getcmdpath(cmd, ref, ptr));
 }

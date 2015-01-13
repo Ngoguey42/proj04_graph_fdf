@@ -6,90 +6,12 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/25 10:41:34 by ngoguey           #+#    #+#             */
-/*   Updated: 2014/12/05 09:18:52 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/01/13 11:56:06 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include <stdlib.h>
-/*
-t_point	fdf_point(char *name, double x, double y, double z)
-{
-	t_point		pt;
-
-	ft_strlcpy(pt.name, name, POINTS_NAMES_LEN);
-	pt.coof.x = x;
-	pt.coof.y = y;
-	pt.coof.z = z;
-	return (pt);
-}
-
-int		fdf_store_point(t_point points[MAX_PNT], t_point point)
-{
-	static int	i = 0;
-
-	if (i > MAX_PNT - 1)
-	{
-		ft_dprintf(2, "Points tab overflow.\n");
-		exit(0);
-	}
-	points[i++] = point;
-	return (0);
-}
-
-int		fdf_store_obj(t_fdfobj objs[MAX_OBJ], t_fdfobj obj)
-{
-	static int	i = 0;
-
-	if (i > MAX_OBJ - 1)
-	{
-		ft_dprintf(2, "Objs tab overflow.\n");
-		exit(0);
-	}
-	objs[i++] = obj;
-	return (0);
-}
-
-t_fdfobj	fdf_line(int apnt, int bpnt, t_co c)
-{
-	t_fdfobj	obj;
-
-	ft_bzero(&obj, sizeof(t_fdfobj));
-	obj.type = 1;
-	obj.apointi = apnt;
-	obj.bpointi = bpnt;
-	obj.gr.ico = c;
-	return (obj);
-}
-
-int			fdf_get_pnti(t_point points[MAX_PNT], char *name)
-{
-	int		i;
-
-	i = 0;
-	while (*points[i].name)
-	{
-		if (ft_strequ(points[i].name, name))
-			return (i);
-		i++;
-	}
-	return (-1);
-}
-
-t_fdfobj	fdf_line_str(t_point points[MAX_PNT], char *apnt, char *bpnt, t_co c)
-{
-	int			ai;
-	int			bi;
-	t_fdfobj	errobj;
-
-	errobj.type = -1;
-	if ((ai = fdf_get_pnti(points, apnt)) < 0)
-		return (errobj);
-	if ((bi = fdf_get_pnti(points, bpnt)) < 0)
-		return (errobj);
-	return (fdf_line(ai, bi, c));
-}
-*/
 /*
 ** 'fdf_store_acav' error codes:
 **		0: Reading done, Grid valid
@@ -175,33 +97,9 @@ static void	acavcolor_validity(int ret, t_fdf *fdf)
 	}
 }
 
-void	fdf_store_imgs(t_fdf *fdf, int ac, char *av[])
+void		fdf_store_imgs(t_fdf *fdf, int ac, char *av[])
 {
 	acavcolor_validity(fdf_store_acavcolor(ac, av, fdf), fdf);
 	acavcolor_delta(fdf);
 	acavgrid_validity(ac, av, fdf_store_acavgrid(ac, av, fdf), *fdf);
-
-/* 	acav_store_points_colors(fdf, *fdf->pntm); */
-/* 	exit(0); */
-/*
-	fdf_store_point(fdf->pnt, fdf_point("O", 0, 0, 0));
-	fdf_store_point(fdf->pnt, fdf_point("x10", 10, 0, 0));
-	fdf_store_point(fdf->pnt, fdf_point("y10", 0, 10, 0));
-	fdf_store_point(fdf->pnt, fdf_point("z10", 0, 0, 10));
-	fdf_store_point(fdf->pnt, fdf_point("x-10", -10, 0, 0));
-	fdf_store_point(fdf->pnt, fdf_point("y-10", 0, -10, 0));
-	fdf_store_point(fdf->pnt, fdf_point("z-10", 0, 0, -10));
-	fdf_store_obj(fdf->obj, fdf_line_str(fdf->pnt, "O", "x10",
-										VCOTOI(255, 0, 0, 0)));
-	fdf_store_obj(fdf->obj, fdf_line_str(fdf->pnt, "O", "x-10",
-										VCOTOI(70, 0, 0, 0)));
-	fdf_store_obj(fdf->obj, fdf_line_str(fdf->pnt, "O", "y10",
-										VCOTOI(0, 255, 0, 0)));
-	fdf_store_obj(fdf->obj, fdf_line_str(fdf->pnt, "O", "y-10",
-										VCOTOI(0, 70, 0, 0)));
-	fdf_store_obj(fdf->obj, fdf_line_str(fdf->pnt, "O", "z10", 
-										VCOTOI(0, 0, 255, 0)));
-	fdf_store_obj(fdf->obj, fdf_line_str(fdf->pnt, "O", "z-10",
-									VCOTOI(0, 0, 70, 0)));
-*/
 }

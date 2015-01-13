@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list.c                                          :+:      :+:    :+:   */
+/*   evlxpr_list.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/07/19 11:39:42 by ngoguey           #+#    #+#             */
-/*   Updated: 2014/07/19 17:38:37 by ngoguey          ###   ########.fr       */
+/*   Created: 2014/12/31 14:39:05 by ngoguey           #+#    #+#             */
+/*   Updated: 2014/12/31 14:53:24 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_eval_expr.h"
+#include <stdlib.h>
+#include <ft_eval_expr.h>
 
-t_evlxpr_cell	*evlxpr_create_elem(int value, char oper, char ref)
+static t_evx	*evlxpr_create_elem(int value, char oper, char ref)
 {
-	t_evlxpr_cell	*new;
+	t_evx	*new;
 
-	new = malloc(sizeof(t_evlxpr_cell));
+	new = (t_evx*)malloc(sizeof(t_evx));
+	if (new == NULL)
+		return (NULL);
 	new->next = NULL;
 	new->value = value;
 	new->oper = oper;
@@ -24,29 +27,35 @@ t_evlxpr_cell	*evlxpr_create_elem(int value, char oper, char ref)
 	return (new);
 }
 
-void			evlxpr_lpback(t_evlxpr_cell **begin_list, int value, char oper,
-				char ref)
+int				evlxpr_lpback(t_evx *alst[1], int v, char op, char ref)
 {
-	t_evlxpr_cell	*current;
+	t_evx	*current;
 
-	if (*begin_list == NULL)
-		*begin_list = evlxpr_create_elem(value, oper, ref);
+	if (*alst == NULL)
+	{
+		*alst = evlxpr_create_elem(v, op, ref);
+		if (*alst == NULL)
+			return (1);
+	}
 	else
 	{
-		current = *begin_list;
+		current = *alst;
 		while (current->next != NULL)
 			current = current->next;
-		current->next = evlxpr_create_elem(value, oper, ref);
+		current->next = evlxpr_create_elem(v, op, ref);
+		if (current->next == NULL)
+			return (1);
 	}
+	return (1);
 }
 
-t_evlxpr_cell	*evlxpr_llast(t_evlxpr_cell **begin_list)
+t_evx			*evlxpr_llast(t_evx *alst[1])
 {
-	t_evlxpr_cell	*current;
+	t_evx	*current;
 
-	if (!*begin_list)
+	if (!*alst)
 		return (NULL);
-	current = *begin_list;
+	current = *alst;
 	while (current->next)
 		current = current->next;
 	return (current);

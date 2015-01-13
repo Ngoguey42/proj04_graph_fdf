@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/07 18:35:17 by ngoguey           #+#    #+#             */
-/*   Updated: 2014/12/10 11:26:18 by ngoguey          ###   ########.fr       */
+/*   Updated: 2014/12/22 09:44:06 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void	ptf_free_list(t_printf_part **beginning);
 
 int		parse_format(const char *format, t_printf_part **beginning);
 int		final_string_size(t_printf_part *current);
-int		get_color_tag_index(const char *str);
+int		coi(const char *str);
 int		add_color_flag(t_printf_part *p);
 void	string_cat(char *s1, size_t len);
 
@@ -110,8 +110,6 @@ int		store_opt_8(char c, t_printf_part *part);
 /*
 ** Specifiers building.
 */
-/* void	populate_build_nbr(int(*build_nbr[NUM_SPECIFIERS]) */
-/* 			(t_printf_part *part, va_list *args)); */
 int		build_nbr_0(t_printf_part *part, va_list *args);
 int		build_nbr_1(t_printf_part *part, va_list *args);
 int		build_nbr_3(t_printf_part *part, va_list *args);

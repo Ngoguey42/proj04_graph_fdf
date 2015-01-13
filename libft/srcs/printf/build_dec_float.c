@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/09 12:18:53 by ngoguey           #+#    #+#             */
-/*   Updated: 2014/12/10 08:17:00 by ngoguey          ###   ########.fr       */
+/*   Updated: 2014/12/22 09:33:18 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,6 @@ static char		*build_float(double nbr, t_printf_part *part, int type)
 	return (str);
 }
 
-
-
 int				build_nbr_7(t_printf_part *part, va_list *args)
 {
 	double	nbr;
@@ -65,7 +63,6 @@ int				build_nbr_7(t_printf_part *part, va_list *args)
 	PRE = AND_I(PSTA_MASK) ? va_arg(*args, int) : PRE;
 	if (!AND_I(PNUM_MASK) || PRE < 0)
 		PRE = 6;
-/* 	PRE = AND_I(PNUM_MASK) ? PRE : 6; */
 	nbr = va_arg(*args, double);
 	str = build_float(nbr, part, ft_dbltype(nbr));
 	if (WID > 0 && WID > (int)ft_strlen(str))
@@ -78,11 +75,5 @@ int				build_nbr_7(t_printf_part *part, va_list *args)
 	else if (WID < 0 && ABS(WID) > (int)ft_strlen(str))
 		str = ft_pad_string(str, ' ', WID, 1);
 	part->nbr_ptr = str;
-	(void)str;
-	(void)part;
-	(void)args;
-	(void)nbr;
-
 	return (1);
-	
 }

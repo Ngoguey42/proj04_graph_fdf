@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/20 11:36:56 by ngoguey           #+#    #+#             */
-/*   Updated: 2014/12/01 12:20:03 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/01/01 11:43:07 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ static void		concat_parts(char *str, t_list *buf, char *dat, int *szs)
 			str = ft_memcset(str, (int)s, szs[i] - (buf->content_size - 1));
 		str = ft_memcset(str, (int)s, dat[i * 5 + 1]);
 	}
+	*str = '\0';
 }
 
 int				ptf_fflush_table_buffer(char **ret)
@@ -114,7 +115,6 @@ int				ptf_fflush_table_buffer(char **ret)
 	char	*datas;
 	int		*colsizes;
 
-	fflush(stdout);
 	if (!(buf = ptf_buffer("getbuf", 0, NULL)))
 		return (-1);
 	datas = tabbuffer_settable(NULL);

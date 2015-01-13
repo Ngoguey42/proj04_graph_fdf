@@ -6,11 +6,10 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/07 18:23:00 by ngoguey           #+#    #+#             */
-/*   Updated: 2014/11/17 08:25:55 by ngoguey          ###   ########.fr       */
+/*   Updated: 2014/12/27 10:19:56 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdint.h> //debug
 #include "ft_printf.h"
 #include "libft.h"
 
@@ -35,7 +34,7 @@ t_i64	get_signed_varg(unsigned char length, va_list *args)
 	else if (length == 1)
 		return ((t_i64)(intmax_t)va_arg(*args, t_i64));
 	else if (length == 2)
-		return ((t_i64)(int)va_arg(*args, long int));
+		return ((t_i64)va_arg(*args, size_t));
 	else if (length == 3)
 		return ((t_i64)(ptrdiff_t)va_arg(*args, long int));
 	else if (length == 4)
@@ -58,9 +57,9 @@ t_ui64	get_unsigned_varg(unsigned char length, va_list *args)
 	else if (length == 1)
 		return ((t_ui64)(uintmax_t)va_arg(*args, t_ui64));
 	else if (length == 2)
-		return ((t_ui64)(size_t)va_arg(*args, t_ui32));
+		return ((t_ui64)va_arg(*args, size_t));
 	else if (length == 3)
-		return ((t_ui64)(unsigned int)va_arg(*args, t_ui32));
+		return ((t_ui64)va_arg(*args, ptrdiff_t));
 	else if (length == 4)
 		return ((t_ui64)(unsigned int)va_arg(*args, t_ui32));
 	else if (length == 5)

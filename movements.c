@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/03 07:57:12 by ngoguey           #+#    #+#             */
-/*   Updated: 2014/12/12 14:08:26 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/01/13 11:52:01 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ static int	balance_directions(double dirweight[3])
 		i++;
 	}
 	while (t && --i >= 0)
-/* 		if (!(tot < -0.0 || tot > +0.0)) */
 		dirweight[i] /= tot; 
 	return (t);
 }
@@ -96,8 +95,8 @@ static void	update_angles(double angweight[2], t_fdf *fdf)
 int			fdf_move(t_fdf *fdf)
 {
 	int		t;
-	double	dirweight[3]; //front/left/up
-	double	angweight[2]; //phi/theta
+	double	dirweight[3];
+	double	angweight[2];
 
 	dirweight[0] = (fdf->ev[0] == 1) ? 1.0 : 0.0 + (fdf->ev[1] == 1) ? -1.0 : 0.0;
 	dirweight[1] = (fdf->ev[2] == 1) ? 1.0 : 0.0 + (fdf->ev[3] == 1) ? -1.0 : 0.0;
@@ -112,9 +111,6 @@ int			fdf_move(t_fdf *fdf)
 		update_angles(angweight, fdf);
 	if (t)
 		fdf->redraw = 1;
-	qprintf("(%X)", t);
-/* 	return (t ? 1 : 0); */
-/* 	((t_fdf)fdf)->redraw = 1; */
 	return (0);
 }
 

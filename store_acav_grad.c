@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/05 07:15:46 by ngoguey           #+#    #+#             */
-/*   Updated: 2014/12/05 16:27:51 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/01/13 11:53:15 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,23 +99,13 @@ static t_grad	build_type31(t_fdf fdf, double az, double bz)
 
 	hratl = az / ((double)fdf.fdfsz.z / 5.5);
 	hrath = bz / ((double)fdf.fdfsz.z / 5.5);
-
-//	1
 	gr.stc2 = avco2;
-	
-//	gr.stc1	hratL*2*davco0+acvo[0]
 	tmp1 = DCOMUL(davco0, (hratl * 2));
 	gr.stc1 = DDCOADD(tmp1, avco0);
-	
-//	gr.dtc1	avco[2] - gr.stc1
 	gr.dtc1 = DDCOSUB(avco2, gr.stc1);
-	
-//	gr.dtc2	(hratH-0,5)*2*davco1
 	tmp3 = (hrath - 0.5) * 2;
 	gr.dtc2 = DCOMUL(davco1, tmp3);
-//
 	gr.v1 = (0.5 - hratl) / (hrath - hratl);
-	qprintf("\n");
 	return (gr);
 }
 
@@ -124,42 +114,23 @@ static t_grad	build_type32(t_fdf fdf, double az, double bz)
 	t_grad	gr;
 	double	hratl;
 	double	hrath;
-	// t_cod	avco0;
-	// t_cod	avco1;
 	t_cod	avco2;
-
-	// t_cod	tmp1;
 	double	tmp3;
 	gr = (t_grad){3, {{0.0, 0.0, 0.0, 0.0}}, {0.0, .0, .0, .0}, {0.0, .0, .0, .0},
 			{0.0, .0, .0, .0}, {0.0, .0, .0, .0}, {.0, .0, .0, .0}, 0.0};
 	
-	// avco0 = ICOTOD((double)fdf.avco[0]);
-	// avco1 = ICOTOD((double)fdf.avco[1]);
 	avco2 = ICOTOD((double)fdf.avco[2]);
-	
 	t_cod davco0 = fdf.davco[0];
 	t_cod davco1 = fdf.davco[1];
-
 	hratl = az / ((double)fdf.fdfsz.z / 5.5);
 	hrath = bz / ((double)fdf.fdfsz.z / 5.5);
-
-//	1
 	gr.stc2 = avco2;
-	
-//	gr.dtc1	avco[2] - gr.stc1
 	tmp3 = (hratl - 0.5) * 2 * -1;
 	gr.dtc1 = DCOMUL(davco1, tmp3);
-	
-//	gr.stc1	hratL*2*davco0+acvo[0]
 	gr.stc1 = DDCOSUB(avco2, gr.dtc1);
-	
-//	gr.dtc2	(hratH-0,5)*2*davco1
 	tmp3 = (0.5 - hrath) * 2 * -1;
 	gr.dtc2 = DCOMUL(davco0, tmp3);
-//
-	// gr.v1 = (0.5 - hrath) / (hratl - hrath);
 	gr.v1 = (0.5 - hratl) / (hrath - hratl);
-	qprintf("\n");
 	return (gr);
 }
 
