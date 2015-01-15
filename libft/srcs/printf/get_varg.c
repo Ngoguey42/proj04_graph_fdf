@@ -10,8 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdint.h>
 #include "ft_printf.h"
 #include "libft.h"
+
 
 /*
 ** 'get_signed_varg' returns an int64_t.

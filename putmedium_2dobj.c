@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/04 14:26:17 by ngoguey           #+#    #+#             */
-/*   Updated: 2014/12/05 16:15:44 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/01/15 08:00:06 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,8 +118,6 @@ int		fdf_put_line_g3(t_fdf fdf, t_cood cooa, t_cood coob, t_grad gr)
 
 int		fdf_put_line_grad(t_fdf fdf, t_cood cooa, t_cood coob, t_grad grad)
 {
-/* 	if (grad.type >= 2 && ((grad.agrad > grad.bgrad) || (grad.agrad < grad.bgrad))) */
-/* 		return (fdf_put_line_g2(fdf, cooa, coob, grad)); */
 	if (grad.type == 2)
 		return (fdf_put_line_g2(fdf, cooa, coob, grad));
 	if (grad.type == 3)

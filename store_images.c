@@ -6,12 +6,13 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/25 10:41:34 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/01/13 11:56:06 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/01/15 07:27:42 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
 #include <stdlib.h>
+#include "fdf.h"
+
 /*
 ** 'fdf_store_acav' error codes:
 **		0: Reading done, Grid valid
@@ -23,17 +24,21 @@
 static void	acavgrid_validity(int ac, char *av[], int ret, t_fdf fdf)
 {
 	if (!ret)
-		ft_printf("%UQs reading done: %dl/%dc/%dh\n", av[1],
-				fdf.fdfsz.x, fdf.fdfsz.y, fdf.fdfsz.z);
+	{
+		D(char*, av[1]);
+		D(int, fdf.fdfsz.x);
+		D(int, fdf.fdfsz.y);
+		D(int, fdf.fdfsz.z);
+	}
 	else
 	{
 		if (ret == 1)
-			ft_dprintf(2, "%s\n", "Could not open av[1]. Exiting.");
+			ft_putendl_fd("Could not open av[1]. Exiting.", 2);
 		if (ret == 2)
-			ft_dprintf(2, "%s\n", "Grid is invalid for some reason. Exiting.");
+			ft_putendl_fd("Grid is invalid for some reason. Exiting.", 2);
 		if (ret == 3)
-			ft_dprintf(2, "%s\n",
-				"Could not open av[1] for second reading. Exiting.");
+			ft_putendl_fd("Could not open av[1] for second reading. Exiting.",
+				2);
 		exit(EXIT_FAILURE);
 	}
 	(void)ac;
@@ -68,6 +73,7 @@ static void	acavcolor_delta(t_fdf *fdf)
 			(double)fdf->avco[1].s.b - (double)fdf->avco[2].s.b, 0.0);
 	}
 }
+
 static void	acavcolor_validity(int ret, t_fdf *fdf)
 {
 	int i;
@@ -75,24 +81,25 @@ static void	acavcolor_validity(int ret, t_fdf *fdf)
 	if (ret == 0)
 	{
 		i = -1;
-		ft_printf("%d colors read:", fdf->num_avco);
+		D(int, fdf->num_avco);
 		while (++i < fdf->num_avco)
-			ft_printf("(:red:%2d :gre:%2d :cya:%2d:eoC:)",
-				fdf->avco[i].s.r,
-				fdf->avco[i].s.g, fdf->avco[i].s.b);
-		ft_putchar('\n');
+		{
+			D(unsigned char, fdf->avco[i].s.r);
+			D(unsigned char, fdf->avco[i].s.g);
+			D(unsigned char, fdf->avco[i].s.b);
+		}
 	}
 	else
 	{
 		if (ret == 1)
-			ft_dprintf(2, "Colors missing: Default colors loaded\n", ret);
+			ft_putendl("Colors missing: Default colors loaded");
 		if (ret == 2)
-			ft_dprintf(2, "Invalid av[2] string: Default colors loaded\n", ret);
+			ft_putendl("Invalid av[2] string: Default colors loaded");
 		if (ret == 3)
-			ft_dprintf(2, "av[2] is invalid for some reason:"
-				" Default colors loaded\n", ret);
+			ft_putendl("av[2] is invalid for some reason:"
+				" Default colors loaded");
 		if (ret == 4)
-			ft_dprintf(2, "av[2] too long: Default colors loaded\n", ret);
+			ft_putendl("av[2] too long: Default colors loaded");
 		acavcolor_storedefault(fdf);
 	}
 }

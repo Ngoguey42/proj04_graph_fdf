@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/25 08:53:27 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/01/13 12:13:44 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/01/15 07:40:43 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <libft.h>
 # include <ft_math.h>
 # include <ft_clock.h>
+#include <ft_debug.h> //debug
 
 # define USEMLX
 # ifdef USEMLX
@@ -187,6 +188,7 @@ int		fdf_put_line_grad(t_fdf fdf, t_cood cooa, t_cood coob, t_grad grad);
 
 void	fdf_pause(t_fdf *fdf);
 
+void	store_segments(int lineinfo[3], t_fdf *fdf);
 void    fdf_store_imgs(t_fdf *fdf, int ac, char *av[]);
 int		fdf_store_acavgrid(int ac, char *av[], t_fdf *fdf);
 int		fdf_store_acavcolor(int ac, char *av[], t_fdf *fdf);

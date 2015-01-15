@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/09 12:45:55 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/01/09 14:17:13 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/01/15 07:44:26 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	get_format_index(int index, char buf[5])
 
 	"%hhd", "%hhu", "%hd", "%hu",
 	"%d", "%u", "%lld", "%llu",
-	"%p", "%s", "%d", "%d", "%Ld", "%u", "%hhu"};
+	"%p", "%s", "%.3f", "%.3f", "%L.3f", "%u", "%hhu"};
 	ft_strlcpy(buf, formats[index], 5);
 	return ;
 }

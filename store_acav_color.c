@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/03 10:02:03 by ngoguey           #+#    #+#             */
-/*   Updated: 2014/12/03 12:02:06 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/01/15 07:26:34 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /*
 ** Valid Color Field, (default colors if invalid):
-**		Field's valid characters are " ;0123456789", and begin with a digit. 
+**		Field's valid characters are " ;0123456789", and begin with a digit.
 **		Field must contain 1, 2 or 3 color(s).
 **		Each color must have 3 consecutive numbers, for r, g, b values.
 **		Numbers must be separated with a single space.
@@ -50,7 +50,7 @@ static char	*get_color(char *str, t_co *color)
 			cptr = (nbi == 2) ? &color->s.g : &color->s.b;
 		if (ft_isdigit(*str))
 		{
-			if ((((t_ui32)*cptr) * 10 + (t_ui32)*str - (t_ui32)'0') > 255)
+			if ((((t_ui32) * cptr) * 10 + (t_ui32)(*str - '0')) > 255)
 				return (NULL);
 			*cptr = *cptr * 10 + (t_byte)*str - (t_byte)'0';
 		}
@@ -68,7 +68,7 @@ static void	store_colors(t_co colors[3], int nb, t_fdf *fdf)
 		fdf->avco[nb] = colors[nb];
 }
 
-int			 fdf_store_acavcolor(int ac, char *av[], t_fdf *fdf)
+int			fdf_store_acavcolor(int ac, char *av[], t_fdf *fdf)
 {
 	t_co	colors[3];
 	char	*str;
