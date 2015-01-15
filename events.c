@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/25 09:17:49 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/01/13 12:13:03 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/01/15 09:09:49 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ int		fdf_loop_hook(t_fdf *fdf)
 
 int		fdf_expose_hook(t_fdf *fdf)
 {
-	ft_printf("Expose Hook: %p\n", fdf);
     fdf_init_surface(*fdf);
     fdf_set_surface(*fdf);
     fdf_push_surface(*fdf);
@@ -100,9 +99,7 @@ int		fdf_keydo_hook(int keycode, t_fdf *fdf)
 	int	t;
 
 	t = 0;
-	if (keycode == 'i')
-		fdf_debug(*fdf);
-	else if (keycode == 'w' && (t = 1))
+	if (keycode == 'w' && (t = 1))
 		fdf->ev[0] = 1;
 	else if (keycode == 's' && (t = 1))
 		fdf->ev[1] = 1;
@@ -118,11 +115,5 @@ int		fdf_keydo_hook(int keycode, t_fdf *fdf)
 		fdf->ev[8] = 1;
 	else if (keycode == KEYTDO && (t = 1))
 		fdf->ev[9] = 1;
-	return (0);
-}
-
-int		fdf_mouse_hook(int button, int x, int y, t_fdf *fdf)
-{
-	ft_printf("Mouse Hook: %d %d %d %p\n", button, x, y, fdf);
 	return (0);
 }

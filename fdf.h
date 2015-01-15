@@ -6,10 +6,9 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/25 08:53:27 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/01/15 08:38:35 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/01/15 09:19:08 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef FDF_H
 # define FDF_H
@@ -36,8 +35,6 @@
 # define WIN1P ((SDL_Surface*)fdf->win1)
 # endif
 
-#define PEACE(A1, A2) A1 A2; (void)A2
-
 # define WINY 1000.0
 
 # define WIN_Y (int)(WINY)
@@ -56,14 +53,9 @@
 # define PHMIN (-PHMAX)
 
 # define DENSITY 1.0
-# define DENSITY3D 50.0
-
-# define DBG (0)
-
-# define DISTANCE_FOCALE 5.0
 
 # define XYSPEEDBASE 0.5
-# define ZSPEEDBASE 0.5  
+# define ZSPEEDBASE 0.5
 # define ASPEEDBASE 0.075
 
 # define DEFAULT_COLOR0 VCOTOI(50, 125, 50, 0)
@@ -77,28 +69,16 @@
 # define STARTCAMPH (1.528 * M_PI)
 # define STARTCAMTH (10.958 * M_PI)
 
-
 # define POINTS_NAMES_LEN 30
 
 # define KEYQUI 65307
-# define KEYMFW 65362
-# define KEYMBW 65364
-# define KEYMLE 65361
-# define KEYMRI 65363
-# define KEYMUP 32
-# define KEYMDO b
-# define KEYTRI d
-# define KEYTLE a
 # define KEYTUP 65362
 # define KEYTDO 65364
-
-# define MAX_PNT 50
-# define MAX_OBJ 75
 
 /*
 ** 'struct s_ang':	Spherical coordinates.
 ** 	th:		Theta. Angle x1-O-Pxy. With Pxy: Pt's projection in the Oxy plan.
-**	ph:		Phi. Angle z1-O-Point. 
+**	ph:		Phi. Angle z1-O-Point.
 */
 typedef struct	s_ang
 {
@@ -161,8 +141,6 @@ typedef struct	s_fdf
 	int			ev[10];
 	t_clockev	mvmt_clockev;
 	int			redraw;
-	t_point		pnt[MAX_PNT + 1];
-	t_fdfobj	obj[MAX_OBJ + 1];
 	t_point		**pntm[1];
 	t_fdfobj	**objm[1];
 	t_cooi		fdfsz;
@@ -171,48 +149,44 @@ typedef struct	s_fdf
 	t_cod		davco[2];
 }				t_fdf;
 
-int     fdf_3d_line(t_fdf fdf, t_fdfobj obj, t_point ap, t_point bp);
-t_cood  fdf_3d_pix(t_fdf fdf, t_cood coof, t_co c);
-int		fdf_put_line_g3(t_fdf fdf, t_cood cooa, t_cood coob, t_grad gr);
+int				fdf_3d_line(t_fdf fdf, t_fdfobj obj, t_point ap, t_point bp);
+t_cood			fdf_3d_pix(t_fdf fdf, t_cood coof, t_co c);
+int				fdf_put_line_g3(t_fdf fdf, t_cood cooa, t_cood coob, t_grad gr);
 
-int		fdf_put_pix(t_fdf fdf, t_cooi coo, t_co c);
-int		fdf_put_fpix(t_fdf fdf, t_cood coof, t_co c);
-int		fdf_put_string(t_fdf fdf, t_cooi coo, t_co c, char *str);
+int				fdf_put_pix(t_fdf fdf, t_cooi coo, t_co c);
+int				fdf_put_fpix(t_fdf fdf, t_cood coof, t_co c);
+int				fdf_put_string(t_fdf fdf, t_cooi coo, t_co c, char *str);
 
-int		fdf_puts_pix(t_fdf fdf, t_cooi coo, t_co c);
-int		fdf_puts_fpix(t_fdf fdf, t_cood coof, t_co c);
+int				fdf_puts_pix(t_fdf fdf, t_cooi coo, t_co c);
+int				fdf_puts_fpix(t_fdf fdf, t_cood coof, t_co c);
 
-int		fdf_put_line(t_fdf fdf, t_cood cooa, t_cood coob, t_co c);
-int		fdf_put_line_grad(t_fdf fdf, t_cood cooa, t_cood coob, t_grad grad);
+int				fdf_put_line(t_fdf fdf, t_cood cooa, t_cood coob, t_co c);
+int				fdf_put_line_grad(t_fdf fdf,
+					t_cood cooa, t_cood coob, t_grad grad);
 
-void	fdf_pause(t_fdf *fdf);
+void			fdf_pause(t_fdf *fdf);
 
-void	store_segments(int lineinfo[3], t_fdf *fdf);
-void    fdf_store_imgs(t_fdf *fdf, int ac, char *av[]);
-int		fdf_store_acavgrid(int ac, char *av[], t_fdf *fdf);
-int		fdf_store_acavcolor(int ac, char *av[], t_fdf *fdf);
-t_grad	fdf_build_grad(t_fdf fdf, double az, double bz);
+void			store_segments(int lineinfo[3], t_fdf *fdf);
+void			fdf_store_imgs(t_fdf *fdf, int ac, char *av[]);
+int				fdf_store_acavgrid(int ac, char *av[], t_fdf *fdf);
+int				fdf_store_acavcolor(int ac, char *av[], t_fdf *fdf);
+t_grad			fdf_build_grad(t_fdf fdf, double az, double bz);
 
-int     fdf_draw_screen(t_fdf fdf);
+int				fdf_draw_screen(t_fdf fdf);
 
-int		fdf_init_window(t_fdf *fdf);
-int		fdf_init_surface(t_fdf fdf);
-int 	fdf_set_surface(t_fdf fdf);
-int		fdf_push_surface(t_fdf fdf);
-int		fdf_quit(t_fdf fdf);
+int				fdf_init_window(t_fdf *fdf);
+int				fdf_init_surface(t_fdf fdf);
+int				fdf_set_surface(t_fdf fdf);
+int				fdf_push_surface(t_fdf fdf);
+int				fdf_quit(t_fdf fdf);
 
-int		fdf_set_defpos(t_fdf *fdf);
-int		fdf_move(t_fdf *fdf);
-int		fdf_move_void(void *fdf);
+int				fdf_set_defpos(t_fdf *fdf);
+int				fdf_move(t_fdf *fdf);
+int				fdf_move_void(void *fdf);
 
-int		fdf_expose_hook(t_fdf *fdf);
-int		fdf_keydo_hook(int keycode,t_fdf *fdf);
-int		fdf_keyup_hook(int keycode,t_fdf *fdf);
-int		fdf_mouse_hook(int button,int x,int y,t_fdf *fdf);
-int		fdf_loop_hook(t_fdf *fdf);
-
-
-
-void    fdf_debug(t_fdf fdf);
+int				fdf_expose_hook(t_fdf *fdf);
+int				fdf_keydo_hook(int keycode, t_fdf *fdf);
+int				fdf_keyup_hook(int keycode, t_fdf *fdf);
+int				fdf_loop_hook(t_fdf *fdf);
 
 #endif

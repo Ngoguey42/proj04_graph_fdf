@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/05 07:42:11 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/01/15 07:41:45 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/01/15 09:13:01 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ static void	store_point(int pointinfo[3], int lineinfo[3], t_fdf *fdf)
 		(double)pointinfo[0],
 		(double)pointinfo[1],
 		(double)pointinfo[2] / 5.5};
-	ft_strcpy(point.name, buf);
+	ft_strlcpy(point.name, buf, POINTS_NAMES_LEN + 1);
 	point.coof = coof;
 	fdf->fdfsz.z = MAX(fdf->fdfsz.z, pointinfo[2]);
 	if (ft_tabaddm((void***)fdf->pntm, &point, sizeof(t_point)))

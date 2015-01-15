@@ -18,7 +18,7 @@ My additions:
 - [X] Movements in the 3d plane. **W/S**:"Move Forward/Backward", **Q/E**:"Strafe Left/Right", **A/D**:"Turn Left/Right" **UP/DOWN**:"Look Up/Down".
 - [X] Balanced movements while multiple keys are pressed. ([movements.c](https://github.com/Ngoguey42/proj04_graph_fdf/blob/master/movements.c))
 - [X] Time dependant movements, instead of CPU dependant. ([events.c](https://github.com/Ngoguey42/proj04_graph_fdf/blob/master/events.c)) ([libft/srcs/ft_clock[...].c](https://github.com/Ngoguey42/proj04_graph_fdf/tree/master/libft/srcs))
-- [X] SDL compatibility.
+- [X] SDL compatibility. (Crappy)
 - [X] One, two or three colors read in arguments.
 
 Use: (colors in RGB decimal):
