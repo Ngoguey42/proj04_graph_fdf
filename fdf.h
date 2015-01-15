@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/25 08:53:27 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/01/15 07:40:43 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/01/15 08:38:35 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,10 +171,9 @@ typedef struct	s_fdf
 	t_cod		davco[2];
 }				t_fdf;
 
-int     fdf_3d_line(t_fdf fdf, t_cood cooa, t_cood coob, t_co c);
-int     fdf_3d_line2(t_fdf fdf, t_fdfobj obj, t_point ap, t_point bp);
+int     fdf_3d_line(t_fdf fdf, t_fdfobj obj, t_point ap, t_point bp);
 t_cood  fdf_3d_pix(t_fdf fdf, t_cood coof, t_co c);
-t_cood  fdf_get_pixproj(t_fdf fdf, t_cood coof);
+int		fdf_put_line_g3(t_fdf fdf, t_cood cooa, t_cood coob, t_grad gr);
 
 int		fdf_put_pix(t_fdf fdf, t_cooi coo, t_co c);
 int		fdf_put_fpix(t_fdf fdf, t_cood coof, t_co c);

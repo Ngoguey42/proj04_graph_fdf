@@ -6,7 +6,7 @@
 #    By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/04 11:28:17 by ngoguey           #+#    #+#              #
-#    Updated: 2015/01/15 07:41:16 by ngoguey          ###   ########.fr        #
+#    Updated: 2015/01/15 08:38:14 by ngoguey          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -48,10 +48,11 @@ LFTG = g
 LFTGRE = gre
 
 SRCSFILES = main.c events.c movements.c $(SPECIALFILES)\
-store_images.c store_acav_grid.c store_acav_color.c store_acav_grad.c store_acav_segments.c\
+store_images.c store_acav_grid.c store_acav_color.c\
+store_acav_grad.c store_acav_segments.c\
 debug.c\
 draw_fdf.c\
-putsmall_3dobj2.c putmedium_2dobj.c 
+putsmall_3dobj.c putmedium_2dobj.c putmedium_2dobj_grad3.c
 # 
 
 # putsmall_3dobj.c 

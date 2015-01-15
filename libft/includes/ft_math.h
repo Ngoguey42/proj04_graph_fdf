@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/03 20:39:10 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/01/08 10:52:49 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/01/15 08:36:16 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -239,16 +239,16 @@ typedef struct			s_img
 /*
 ** Absolute_Coords_To_Struct(t_cooi|t_coof|t_cood)
 */
-# define ACOOTOI(X, Y, Z)	(t_cooi){X, Y, Z}
-# define ACOOTOF(X, Y, Z)	(t_coof){X, Y, Z}
-# define ACOOTOD(X, Y, Z)	(t_cood){X, Y, Z}
-# define ACOOTOL(X, Y, Z)	(t_cool){X, Y, Z}
+# define ACOOTOI(X, Y, Z)	(t_cooi){(X), (Y), (Z)}
+# define ACOOTOF(X, Y, Z)	(t_coof){(X), (Y), (Z)}
+# define ACOOTOD(X, Y, Z)	(t_cood){(X), (Y), (Z)}
+# define ACOOTOL(X, Y, Z)	(t_cool){(X), (Y), (Z)}
 
-# define DCOODIV(O, OP) ACOOTOD(O.x / OP, O.y / OP, O.z / OP)
-# define DCOOADDD(O, A) ACOOTOD(O.x + A.x, O.y + A.y, O.z + A.z)
+# define DCOODIV(O, OP) ACOOTOD((O).x / OP, (O).y / OP, (O).z / OP)
+# define DCOOADDD(O, A) ACOOTOD((O).x + (A).x, (O).y + (A).y, (O).z + (A).z)
 
-# define ICOOADDX(O, OP) ACOOTOI(O.x + OP, O.y, O.z)
-# define ICOOADDY(O, OP) ACOOTOI(O.x, O.y + OP, O.z)
+# define ICOOADDX(O, OP) ACOOTOI((O).x + (OP), (O).y, (O).z)
+# define ICOOADDY(O, OP) ACOOTOI((O).x, (O).y + (OP), (O).z)
 
 /*
 ** Colors operations to integer union.
