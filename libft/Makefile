@@ -6,7 +6,7 @@
 #    By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/04 11:29:36 by ngoguey           #+#    #+#              #
-#    Updated: 2015/01/09 12:52:24 by ngoguey          ###   ########.fr        #
+#    Updated: 2015/03/11 07:46:44 by ngoguey          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -103,7 +103,7 @@ PTFSRCSFILES = \
 	store_opt_6to8.c    build_hex_float_unnorm.c    buffer_flushcols_concat.c\
 	add_color_flags.c   build_bonuses.c             ft_vprintf.c\
 	add_color_tags.c    build_nonprintable_string.c buffer_table.c\
-	debug.c             build_nonprintable_string_deps.c\
+			            build_nonprintable_string_deps.c\
 	                    build_uppercases2.c         buffer_flush_lscols.c\
 	                    build_dec_float.c           buffer_lscols_getdatas.c\
 	                    build_dec_float_nbr.c

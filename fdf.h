@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/25 08:53:27 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/03/11 07:19:13 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/03/11 07:48:32 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <libft.h>
 # include <ft_math.h>
 # include <ft_clock.h>
-#include <ft_debug.h> //debug
+/* #include <ft_debug.h> //debug */
 
 # include <mlx.h>
 # define SERV fdf.serv
@@ -56,9 +56,6 @@
 # define STARTCAMX 6.361
 # define STARTCAMY 11.382
 # define STARTCAMZ 0.0
-
-/* # define STARTCAMPH (1.528 * M_PI) */
-/* # define STARTCAMTH (10.958 * M_PI) */
 
 # define STARTCAMPH (1.5005 * M_PI)
 # define STARTCAMTH (10.99 * M_PI)
@@ -175,7 +172,6 @@ int				fdf_push_surface(t_fdf fdf);
 int				fdf_quit(t_fdf fdf);
 
 int				fdf_set_defpos(t_fdf *fdf);
-int				fdf_move(t_fdf *fdf);
 int				fdf_move_void(void *fdf);
 
 int				fdf_expose_hook(t_fdf *fdf);

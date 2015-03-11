@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/25 10:41:34 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/03/11 07:04:38 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/03/11 07:43:06 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,7 @@
 
 static void	acavgrid_validity(int ac, char *av[], int ret, t_fdf fdf)
 {
-	if (!ret)
-	{
-		D(char*, av[1]);
-		D(int, fdf.fdfsz.x);
-		D(int, fdf.fdfsz.y);
-		D(int, fdf.fdfsz.z);
-	}
-	else
+	if (ret)
 	{
 		if (ret == 1)
 			ft_putendl_fd("Could not open av[1]. Exiting.", 2);
@@ -42,6 +35,8 @@ static void	acavgrid_validity(int ac, char *av[], int ret, t_fdf fdf)
 		exit(EXIT_FAILURE);
 	}
 	(void)ac;
+	(void)av;
+	(void)fdf;
 }
 
 static void	acavcolor_storedefault(t_fdf *fdf)
@@ -76,20 +71,7 @@ static void	acavcolor_delta(t_fdf *fdf)
 
 static void	acavcolor_validity(int ret, t_fdf *fdf)
 {
-	int i;
-
-	if (ret == 0)
-	{
-		i = -1;
-		D(int, fdf->num_avco);
-		while (++i < fdf->num_avco)
-		{
-			D(unsigned char, fdf->avco[i].s.r);
-			D(unsigned char, fdf->avco[i].s.g);
-			D(unsigned char, fdf->avco[i].s.b);
-		}
-	}
-	else
+	if (ret != 0)
 	{
 		if (ret == 1)
 			ft_putendl("Colors missing: Default colors loaded");

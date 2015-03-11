@@ -6,11 +6,14 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/03 07:57:12 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/01/13 11:52:01 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/03/11 07:44:06 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fdf.h>
+
+#define PICK_PD(VAL) ((VAL) == 1 ? 1.0 : 0.0)
+#define PICK_ND(VAL) ((VAL) == 1 ? -1.0 : 0.0)
 
 /*
 ** Movement balance.
@@ -46,7 +49,7 @@ static int	balance_angles(double angweight[2])
 		i++;
 	}
 	while (t && --i >= 0)
-		angweight[i] /= tot; 
+		angweight[i] /= tot;
 	return (t);
 }
 
@@ -71,7 +74,7 @@ static int	balance_directions(double dirweight[3])
 		i++;
 	}
 	while (t && --i >= 0)
-		dirweight[i] /= tot; 
+		dirweight[i] /= tot;
 	return (t);
 }
 
@@ -89,32 +92,29 @@ static void	update_directions(double dirweight[3], t_fdf *fdf)
 static void	update_angles(double angweight[2], t_fdf *fdf)
 {
 	fdf->a.ph += ASPEEDBASE * angweight[0];
-	fdf->a.th += ASPEEDBASE * angweight[1];	
+	fdf->a.th += ASPEEDBASE * angweight[1];
 }
 
-int			fdf_move(t_fdf *fdf)
+int			fdf_move_void(void *fdf_ptr)
 {
+	t_fdf	*fdf;
 	int		t;
 	double	dirweight[3];
 	double	angweight[2];
 
-	dirweight[0] = (fdf->ev[0] == 1) ? 1.0 : 0.0 + (fdf->ev[1] == 1) ? -1.0 : 0.0;
-	dirweight[1] = (fdf->ev[2] == 1) ? 1.0 : 0.0 + (fdf->ev[3] == 1) ? -1.0 : 0.0;
-	dirweight[2] = (fdf->ev[6] == 1) ? 1.0 : 0.0 + (fdf->ev[7] == 1) ? -1.0 : 0.0;
-	angweight[0] = (fdf->ev[4] == 1) ? 1.0 : 0.0 + (fdf->ev[5] == 1) ? -1.0 : 0.0;
-	angweight[1] = (fdf->ev[9] == 1) ? 1.0 : 0.0 + (fdf->ev[8] == 1) ? -1.0 : 0.0;
+	fdf = (t_fdf*)fdf_ptr;
+	dirweight[0] = PICK_PD(fdf->ev[0]) + PICK_ND(fdf->ev[1]);
+	dirweight[1] = PICK_PD(fdf->ev[2]) + PICK_ND(fdf->ev[3]);
+	dirweight[2] = PICK_PD(fdf->ev[6]) + PICK_ND(fdf->ev[7]);
+	angweight[0] = PICK_PD(fdf->ev[4]) + PICK_ND(fdf->ev[5]);
+	angweight[1] = PICK_PD(fdf->ev[9]) + PICK_ND(fdf->ev[8]);
 	t = balance_directions(dirweight);
 	t += balance_angles(angweight);
 	if (t & 0x1)
 		update_directions(dirweight, fdf);
-	if (t & 0x2)		
+	if (t & 0x2)
 		update_angles(angweight, fdf);
 	if (t)
 		fdf->redraw = 1;
 	return (0);
-}
-
-int			fdf_move_void(void *fdf)
-{
-	return (fdf_move((t_fdf*)fdf));
 }

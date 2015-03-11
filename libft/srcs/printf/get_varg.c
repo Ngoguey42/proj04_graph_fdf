@@ -6,14 +6,13 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/07 18:23:00 by ngoguey           #+#    #+#             */
-/*   Updated: 2014/12/27 10:19:56 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/03/11 07:46:19 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdint.h>
 #include "ft_printf.h"
 #include "libft.h"
-
 
 /*
 ** 'get_signed_varg' returns an int64_t.

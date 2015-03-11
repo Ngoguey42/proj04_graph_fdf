@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/25 09:17:49 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/03/11 07:33:02 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/03/11 07:35:40 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,9 @@ int		fdf_loop_hook(t_fdf *fdf)
 
 int		fdf_expose_hook(t_fdf *fdf)
 {
-    fdf_init_surface(*fdf);
-    fdf_set_surface(*fdf);
-    fdf_push_surface(*fdf);
+	fdf_init_surface(*fdf);
+	fdf_set_surface(*fdf);
+	fdf_push_surface(*fdf);
 	return (0);
 }
 
@@ -90,27 +90,6 @@ int		fdf_keyup_hook(int keycode, t_fdf *fdf)
 		fdf->ev[9] = 0;
 	return (0);
 }
-
-/* int		fdf_keydo_hook(int keycode, t_fdf *fdf) */
-/* { */
-/* 	if (keycode == 'w') */
-/* 		fdf->ev[0] = 1; */
-/* 	else if (keycode == 's') */
-/* 		fdf->ev[1] = 1; */
-/* 	else if (keycode == 'q') */
-/* 		fdf->ev[2] = 1; */
-/* 	else if (keycode == 'e') */
-/* 		fdf->ev[3] = 1; */
-/* 	else if (keycode == 'a') */
-/* 		fdf->ev[4] = 1; */
-/* 	else if (keycode == 'd') */
-/* 		fdf->ev[5] = 1; */
-/* 	else if (keycode == KEYTUP) */
-/* 		fdf->ev[8] = 1; */
-/* 	else if (keycode == KEYTDO) */
-/* 		fdf->ev[9] = 1; */
-/* 	return (0); */
-/* } */
 
 int		fdf_keydo_hook(int keycode, t_fdf *fdf)
 {
