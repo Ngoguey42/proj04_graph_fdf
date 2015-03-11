@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/15 08:19:46 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/01/15 08:22:41 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/03/11 07:24:08 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static t_cood	fdf_get_pixproj(t_fdf fdf, t_cood coof)
 	tmp = coof.x;
 	coof.x = coof.x * cos(ang.th) + coof.z * sin(ang.th);
 	coof.x = WIN_X / 2 + coof.x * 50.;
-	coof.y = WIN_Y / 2 + coof.y * 50.;
+	coof.y = WIN_Y / 2 + coof.y * 50. - WIN_Y / 2;
 	coof.z = 0;
 	return (coof);
 }

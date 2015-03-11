@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/25 09:17:49 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/01/15 09:09:49 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/03/11 07:33:02 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,52 +68,67 @@ int		fdf_expose_hook(t_fdf *fdf)
 
 int		fdf_keyup_hook(int keycode, t_fdf *fdf)
 {
-	int	t;
-
-	t = 0;
 	if (keycode == KEYQUI)
 		fdf_quit(*fdf);
-	if (keycode == 'p')
+	if (keycode == 'p' && (fdf->redraw = 1))
 		fdf_set_defpos(fdf);
-	else if (keycode == 'w' && (t = 1))
+	else if (keycode == 'd')
 		fdf->ev[0] = 0;
-	else if (keycode == 's' && (t = 1))
+	else if (keycode == 'a')
 		fdf->ev[1] = 0;
-	else if (keycode == 'q' && (t = 1))
+	else if (keycode == KEYTUP)
 		fdf->ev[2] = 0;
-	else if (keycode == 'e' && (t = 1))
+	else if (keycode == KEYTDO)
 		fdf->ev[3] = 0;
-	else if (keycode == 'a' && (t = 1))
+	else if (keycode == 's')
 		fdf->ev[4] = 0;
-	else if (keycode == 'd' && (t = 1))
+	else if (keycode == 'w')
 		fdf->ev[5] = 0;
-	else if (keycode == KEYTUP && (t = 1))
+	else if (keycode == 'e')
 		fdf->ev[8] = 0;
-	else if (keycode == KEYTDO && (t = 1))
+	else if (keycode == 'q')
 		fdf->ev[9] = 0;
 	return (0);
 }
 
+/* int		fdf_keydo_hook(int keycode, t_fdf *fdf) */
+/* { */
+/* 	if (keycode == 'w') */
+/* 		fdf->ev[0] = 1; */
+/* 	else if (keycode == 's') */
+/* 		fdf->ev[1] = 1; */
+/* 	else if (keycode == 'q') */
+/* 		fdf->ev[2] = 1; */
+/* 	else if (keycode == 'e') */
+/* 		fdf->ev[3] = 1; */
+/* 	else if (keycode == 'a') */
+/* 		fdf->ev[4] = 1; */
+/* 	else if (keycode == 'd') */
+/* 		fdf->ev[5] = 1; */
+/* 	else if (keycode == KEYTUP) */
+/* 		fdf->ev[8] = 1; */
+/* 	else if (keycode == KEYTDO) */
+/* 		fdf->ev[9] = 1; */
+/* 	return (0); */
+/* } */
+
 int		fdf_keydo_hook(int keycode, t_fdf *fdf)
 {
-	int	t;
-
-	t = 0;
-	if (keycode == 'w' && (t = 1))
+	if (keycode == 'd')
 		fdf->ev[0] = 1;
-	else if (keycode == 's' && (t = 1))
+	else if (keycode == 'a')
 		fdf->ev[1] = 1;
-	else if (keycode == 'q' && (t = 1))
+	else if (keycode == KEYTUP)
 		fdf->ev[2] = 1;
-	else if (keycode == 'e' && (t = 1))
+	else if (keycode == KEYTDO)
 		fdf->ev[3] = 1;
-	else if (keycode == 'a' && (t = 1))
+	else if (keycode == 's')
 		fdf->ev[4] = 1;
-	else if (keycode == 'd' && (t = 1))
+	else if (keycode == 'w')
 		fdf->ev[5] = 1;
-	else if (keycode == KEYTUP && (t = 1))
+	else if (keycode == 'e')
 		fdf->ev[8] = 1;
-	else if (keycode == KEYTDO && (t = 1))
+	else if (keycode == 'q')
 		fdf->ev[9] = 1;
 	return (0);
 }
