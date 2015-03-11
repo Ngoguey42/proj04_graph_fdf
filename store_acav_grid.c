@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/05 07:42:11 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/01/15 09:13:01 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/03/11 06:51:27 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,7 @@ int			fdf_store_acavgrid(int ac, char *av[], t_fdf *fdf)
 	while ((gnl = get_next_line(fd, &fileline)) > 0)
 		if (get_line_infos(fileline, lineinfo))
 			return (2);
-	if (gnl < 0)
+	if (gnl < 0 || lineinfo[0] <= 0 || lineinfo[1] <= 0 || lineinfo[2] <= 0)
 		return (1);
 	if ((fd = (close(fd), open(av[1], O_RDONLY))) < 0)
 		return (3);

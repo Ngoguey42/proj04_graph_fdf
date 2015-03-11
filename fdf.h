@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/25 08:53:27 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/01/15 09:19:08 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/03/11 06:30:34 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,11 @@
 # include <ft_clock.h>
 #include <ft_debug.h> //debug
 
-# define USEMLX
-# ifdef USEMLX
 # include <mlx.h>
 # define SERV fdf.serv
 # define WIN1 fdf.win1
 # define SERVP fdf->serv
 # define WIN1P fdf->win1
-# else
-# include <SDL/SDL.h>
-# define BPP 4
-# define DEPTH 32
-# define WIN1 ((SDL_Surface*)fdf.win1)
-# define WIN1P ((SDL_Surface*)fdf->win1)
-# endif
 
 # define WINY 1000.0
 

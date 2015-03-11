@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/15 07:40:07 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/01/15 07:44:37 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/03/11 07:09:56 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,14 @@ void		store_segments(int lineinfo[3], t_fdf *fdf)
 	int			c;
 
 	l = 0;
+	D(int, lineinfo[0]);
+	D(int, lineinfo[1]);
+	D(int, lineinfo[2]);
+	if (lineinfo[1] == lineinfo[2] && lineinfo[2] == 1)
+	{
+		ft_putendl_fd("Grid is invalid for some reason. Exiting.", 2);
+		exit(EXIT_FAILURE);
+	}
 	while (++l <= lineinfo[1])
 	{
 		c = 0;

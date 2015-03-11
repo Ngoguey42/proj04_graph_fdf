@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/25 10:41:34 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/01/15 07:27:42 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/03/11 07:04:38 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,5 +108,6 @@ void		fdf_store_imgs(t_fdf *fdf, int ac, char *av[])
 {
 	acavcolor_validity(fdf_store_acavcolor(ac, av, fdf), fdf);
 	acavcolor_delta(fdf);
+	fdf->fdfsz.z = 1.;
 	acavgrid_validity(ac, av, fdf_store_acavgrid(ac, av, fdf), *fdf);
 }

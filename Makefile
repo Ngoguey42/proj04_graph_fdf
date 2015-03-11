@@ -6,7 +6,7 @@
 #    By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/04 11:28:17 by ngoguey           #+#    #+#              #
-#    Updated: 2015/01/15 09:19:59 by ngoguey          ###   ########.fr        #
+#    Updated: 2015/03/11 06:30:57 by ngoguey          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -28,11 +28,6 @@ GRAPHLIB = -L/usr/X11/lib -lmlx -lXext -lX11
 GRAPHINC =
 SPECIALFILES = com_mlx.c putpix_mlx.c pause_mlx.c
 
-# SDL
-# CC = /bin/i686-w64-mingw32-gcc.exe
-# GRAPHLIB =  -L/lib/SDL/ -lmingw32 -lSDLmain -lSDL 
-# GRAPHINC = -I /usr/include/
-# SPECIALFILES = com_sdl.c putpix_sdl.c pause_sdl.c
 
 LIBS = $(LFT) $(GRAPHLIB)
 INCLUDES = $(INCLUDE) $(LFTIPATH) $(GRAPHINC)
