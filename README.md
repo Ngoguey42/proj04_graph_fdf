@@ -24,6 +24,8 @@ Use: (colors in RGB decimal):
 ```sh
 ./fdf file.fdf ["R1 G1 B1[;R2 G2 B2[;R3 G3 B3]]"]
 ```
+
+![ft_retro](./fdf.png)
 <br><br><br><br><br><br><br><br>
 
 
